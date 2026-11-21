@@ -1,34 +1,85 @@
-# Lesson 3: Linux and Kali Fundamentals
+# Lesson 3: Linux, Shell and Kali Fundamentals
 
-**Level:** Beginner | **Platform:** Android Termux | **Root:** Not required
+**Level:** Beginner · **Platform:** Android + Termux · **Root required:** No · **Lab scope:** local files, localhost or example.com only
 
-## Learning goal
-Learn paths, permissions, shell basics, processes and how Termux differs from a full Kali installation.
+## 1. Learning objectives
+By the end of this lesson, you should be able to explain the key concepts, perform each exercise safely, interpret results, and record what you learned.
 
-## Ethics and scope
-Use only your own files, your own Android device, localhost, and expressly authorized systems. Example data is fictional. Do not scan unrelated networks or collect credentials.
+## 2. Concepts explained
+1. Linux directories form a filesystem tree; relative paths depend on your working directory.
 
-## Practical exercise
-Open Termux and follow the commands below. Comments beginning with `#` explain actions; for server labs, use separate Termux sessions.
+2. Termux is not identical to a rooted Linux host or a full Kali Linux installation.
+
+3. File permissions determine who may read, write and execute files.
+
+4. The shell executes commands; processes have identifiers and may be stopped.
+
+5. Kali NetHunter Rootless is a distinct optional environment; it is not required for this course.
+
+## 3. Preparation and safety
+- Obtain authorization before testing any system outside your own local lab.
+- Work with fictional training data. Never upload passwords, private logs, tokens or personal data.
+- Update Termux packages as needed: `pkg update && pkg upgrade -y`.
+- Commands marked as server commands may need a separate Termux session. **Do not run the next command in the same session while a server is occupying it.**
+- Some Android builds restrict networking diagnostics; record the error rather than bypassing device safeguards.
+
+## 4. Step-by-step practical lesson
+### Step 1
+Print your identity, location and system details.
+
+### Step 2
+Create a safe local directory and text file.
+
+### Step 3
+Inspect file permissions and change them to owner-only.
+
+### Step 4
+Practice searching text and listing processes.
+
+### Step 5
+Clean up only the files you created.
+
+## 5. Termux command reference
+These are **individual reference commands**, not one uninterrupted shell script. Run them in the order and session described above. Some lines are alternatives, and comment lines beginning with `#` are explanations.
 
 ```sh
+whoami
 pwd
-ls -la
-mkdir -p ~/linux-lab
-cd ~/linux-lab
-printf 'hello\n' > notes.txt
-cat notes.txt
+uname -a
+mkdir -p ~/ethical-hacking-course/lesson-03 && cd ~/ethical-hacking-course/lesson-03
+printf 'first shell exercise\n' > notes.txt
+ls -l notes.txt
 chmod 600 notes.txt
+cat notes.txt
+grep 'shell' notes.txt
+ps -ef
 ```
 
-## What to observe
-Record the output, explain what it means, and distinguish observations from confirmed vulnerabilities. If a command fails, check your current directory, installed packages, and whether a local server is running. Never publish secrets or real incident logs.
+## 6. Expected observations and troubleshooting
+- A successful command may print output or return to the prompt silently. Check `echo $?` after a command when diagnosing failure.
+- If a file is missing, check `pwd` and `ls -la` and confirm you created it in the current lab directory.
+- If a port is closed, check whether your own local server is running and bound to `127.0.0.1`.
+- If a package command fails, update package indexes and confirm network connectivity.
+- An alert, open port, HTTP header or failed login is **not automatically a verified vulnerability or attack**.
 
-## Quick quiz
-1. What does chmod 600 do?
-2. What is a home directory?
+## 7. Practice assignment
+Write a short lab note containing: **scope**, **commands used**, **observed results**, **what the evidence does and does not prove**, **recommended next step**, and **cleanup performed**. Do not include sensitive information.
 
-## Reflection
-Write down what you learned, what you tested, and why the exercise stayed within an authorized scope.
+## 8. Quiz with answers
+1. **Question:** What does pwd show?
+   **Answer:** Current working directory.
 
-[Back to course index](../README.md)
+2. **Question:** What does chmod 600 mean?
+   **Answer:** Owner can read/write; others have no permissions.
+
+3. **Question:** Is root required for these exercises?
+   **Answer:** No.
+
+## 9. Completion checklist
+- [ ] I can explain the concepts in my own words.
+- [ ] I completed the authorized local exercise or documented why my device could not run it.
+- [ ] I interpreted output without claiming unverified exploitation.
+- [ ] I recorded findings and cleaned up test processes.
+- [ ] I answered the quiz.
+
+[← Return to course index](../README.md)
