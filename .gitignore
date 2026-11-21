@@ -1,0 +1,14 @@
+# Local evidence, logs and generated reports
+*.log
+*.sha256
+baseline.json
+security_report.json
+final_security_report.json
+headers.txt
+nmap_results.txt
+nmap_after.txt
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
